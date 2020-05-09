@@ -20,7 +20,10 @@ function App() {
         >
           Learn React
         </a> */}
-        <button className="Button">Empezar</button>
+        <div className="flex-container">
+          <button className="Pink-button">Individual</button>
+          <button className="Green-button">Equipos</button>
+        </div>
       </header>
     </div>
   );
