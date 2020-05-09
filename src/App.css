@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,26 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-title {
+  color: #61dafb;
+  padding-top: 5%;
+  padding-bottom: 0%;
+  font-size: 4rem;
+}
+
+.Button {
+  background-color: #ff1493;
+  padding: 1%;
+  padding-right: 4%;
+  padding-left: 4%;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-family: mono, Menlo, Monaco;
+  color: #61dafb;
+  font-weight: 700;
+  outline: 0;
 }
 
 @keyframes App-logo-spin {
