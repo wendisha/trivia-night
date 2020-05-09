@@ -5,8 +5,8 @@ class GameContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      OnePlayer: false,
-      TeamUp: false,
+      onePlayer: false,
+      teamUp: false,
     };
     this.handleClickOnePlayer = this.handleClickOnePlayer.bind(this);
     this.handleClickTeamUp = this.handleClickTeamUp.bind(this);
@@ -15,21 +15,25 @@ class GameContainer extends Component {
   handleClickOnePlayer() {
     console.log("Click happened for One Player");
     this.setState({
-      OnePlayer: true,
+      onePlayer: true,
     });
   }
 
   handleClickTeamUp() {
     console.log("Click happened for Team Up");
     this.setState({
-      TeamUp: true,
+      teamUp: true,
     });
   }
 
   render() {
+    const { onePlayer, teamUp } = this.state;
+
     return (
       <div>
         <TriviaLayout
+          onePlayer={onePlayer}
+          teamUp={teamUp}
           handleClickOnePlayer={this.handleClickOnePlayer}
           handleClickTeamUp={this.handleClickTeamUp}
         />
