@@ -8,13 +8,17 @@ class TriviaProvisional extends Component {
       viewAmigas: false,
       viewMath: false,
       viewCulture: false,
+      viewFarandula: false,
       question: "",
       questionCulture: "",
+      questionFarandula: "",
     };
     this.chooseQuestion = this.chooseQuestion.bind(this);
     this.chooseCulture = this.chooseCulture.bind(this);
+    this.chooseFarandula = this.chooseFarandula.bind(this);
     this.catAmigas = this.catAmigas.bind(this);
     this.catCulture = this.catCulture.bind(this);
+    this.catFarandula = this.catFarandula.bind(this);
   }
 
   chooseQuestion() {
@@ -86,10 +90,50 @@ class TriviaProvisional extends Component {
     });
   }
 
+  chooseFarandula() {
+    const questionsFarandula = [
+      "¿Qué jugador de la NBA fue pareja durante un tiempo de la popular Kim Kardashian?",
+      "¿Qué popular serie de Netflix nos habla sobre la vida del narcotraficante Pablo Escobar Gaviria?",
+      "¿Quién fue la primera voz de Mickey Mouse?",
+      "¿Qué conocido actor español protagonizó “La máscara del Zorro” en 1998?",
+      "¿Cómo se llamaba el personaje que interpretaba John Travolta en Grease?",
+      "¿En qué año se estrenó la película de Disney Pinocho?",
+      "¿Cuál es el verdadero nombre de Alejandro Sanz?",
+      "¿Quién es Bella en la saga Crepúsculo?",
+      "¿Cómo se llamaba el personaje que interpretaba Al Pacino en Scarface?",
+      "¿A qué película de Disney pertenece la canción “Un mundo ideal”?",
+      "¿De qué nacionalidad es la cantante Fey?",
+      "¿Qué actor rechazó el papel de Michael Corleone en la película El Padrino, finalmente interpretado por Al Pacino?",
+      "¿Cómo se llama el protagonista de la saga Indiana Jones?",
+      "¿Quién interpreta la canción Baby One More Time?",
+      "¿A quién se considera el Rey del Pop?",
+      "¿Cómo se llama el pájaro símbolo de los Juegos del Hambre?",
+      "¿Quién canta Vivir mi vida?",
+      "¿Qué personaje de Disney perdió su zapato de cristal?",
+      "¿Qué banda de Heavy Metal lanzó un disco de colaboración con el recientemente fallecido Lou Reed?",
+      "¿Qué Beatle fue asesinado por un fan?",
+      "¿Cómo se llama el personaje que interpreta Mario Casas en la serie El Barco?",
+      "¿Qué grupo interpretaba la canción 'Smells like teen spirit?'",
+      "¿Cómo se llama el payaso de 'Los Simpson'?",
+      "¿Cómo se llama el personaje de 'Hellraiser' que tiene clavos en la cara?",
+      "¿Cuál fue el primer festival de rock gratuito en durar más de 3 días en 1969?",
+      "¿Cuántos capítulos tiene la serie de televisión 'Friends?",
+      "¿Cómo se llama el primer hijo de Goku de Dragon Ball?",
+      "¿De donde proviene el reggae?",
+      "¿Cómo se llama la bebé de Los Simpsons?",
+    ];
+    this.setState({
+      questionFarandula: questionsFarandula[
+        Math.floor(Math.random() * questionsFarandula.length)
+      ].toString(),
+    });
+  }
+
   catAmigas() {
     this.setState({
       viewAmigas: true,
       viewCulture: false,
+      viewFarandula: false,
       question: "",
     });
     console.log(this.state.question);
@@ -105,25 +149,46 @@ class TriviaProvisional extends Component {
     this.setState({
       viewAmigas: false,
       viewCulture: true,
+      viewFarandula: false,
       questionCulture: "",
     });
     this.chooseCulture();
   }
 
+  catFarandula() {
+    this.setState({
+      viewAmigas: false,
+      viewCulture: false,
+      viewFarandula: true,
+      questionFarandula: "",
+    });
+    this.chooseFarandula();
+  }
+
   render() {
-    const { viewAmigas, viewCulture, question, questionCulture } = this.state;
+    const {
+      viewAmigas,
+      viewCulture,
+      viewFarandula,
+      question,
+      questionCulture,
+      questionFarandula,
+    } = this.state;
 
     return (
       <div className="Intake">
         Categorias:
         <button className="Blue-button" onClick={this.catAmigas}>
-          Amigas
+          Tertulia
         </button>
-        <button className="Blue-button" onClick={this.catMath}>
+        {/* <button className="Blue-button" onClick={this.catMath}>
           Matematicas
-        </button>
+        </button> */}
         <button className="Blue-button" onClick={this.catCulture}>
           Cultura General
+        </button>
+        <button className="Blue-button" onClick={this.catFarandula}>
+          Farándula
         </button>
         {viewAmigas && (
           <div className="flex-amigas">
@@ -151,6 +216,11 @@ class TriviaProvisional extends Component {
         {viewCulture && (
           <span className="flex-amigas questions">
             {questionCulture && questionCulture}
+          </span>
+        )}
+        {viewFarandula && (
+          <span className="flex-amigas questions">
+            {questionFarandula && questionFarandula}
           </span>
         )}
       </div>
